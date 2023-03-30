@@ -9,5 +9,7 @@ console.log('router loaded');
 
 router.get('/',homeController.home);
 
+router.use('/users',require('./users'));
+
 //to use in other js files
 module.exports = router;
