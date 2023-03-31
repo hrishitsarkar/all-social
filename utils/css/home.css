@@ -1,0 +1,58 @@
+
+#text-desc{
+    height: 80px;
+    margin: 5px 0px;
+
+}
+.color-facebook{
+color: #1877f2;
+}
+.btn:not(:disabled):not(.disabled) {
+height: 50px;
+}
+#category{
+    background-color: black;
+    margin: 5px 0px;
+}
+.input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label, .input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label::after, .input-group:not(.has-validation)>.custom-select:not(:last-child), .input-group:not(.has-validation)>.form-control:not(:last-child) {
+    height: 50px;
+    
+}
+.task-btn{
+    min-width: 10vw;
+    margin: 20px;
+    font-size: 1.3rem;
+}
+ul {
+    list-style: none;
+}
+.list-details{
+    width: 100%;
+}
+.flex{
+    display: flex;
+}
+.align-center{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1.6rem;
+}
+.width-15{
+    width: 15%;
+}
+#date-in-list{
+    min-width: 55%;
+}
+.checkBox{
+    height:20px;
+    width:20px;
+}
+.cat-div{
+    height: 50px;
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+}
+#date-icon{
+    color:grey;
+}
