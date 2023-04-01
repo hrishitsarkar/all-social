@@ -25,100 +25,96 @@
 </script>
 </head>
 <body>
-    
-<div class="container">
-    <div id="first" class="row">
-        <div class="col-12 text-center border-bottom">
-            <h1 class="color-facebook">TODO App</h1>
-        </div>
-        <div class="col-12 text-left border-bottom">
-            <form action="/desc">
-                <h5>Description</h5>
-                <input id="text-desc" class="w-100 border-0" type="text" placeholder="What do you want to do?">
-            </form>
-        </div>
-        <div class="col-6 text-left border-bottom border-right">
-            <h5>Categories</h5>
-            <form action="/category">
-            <div class="dropdown text-left">
-                <!-- Example single danger button -->
-<div class="btn-group w-25">
-    <button type="button" id="category" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Choose a category
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Personal</a>
-      <a class="dropdown-item" href="#">Work</a>
-      <a class="dropdown-item" href="#">Study</a>
-      <a class="dropdown-item" href="#">Other</a>
-      
-    </div>
-  </div>
+    <div class="container">
+
+        <div id="first" class="row">
+            <div class="col-12 text-center border-bottom">
+                <h1 class="color-facebook">TODO App</h1>
             </div>
-        </form>
+            <div class="col-12 text-center flex justify-content-center">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="https://hips.hearstapps.com/hmg-prod/images/marcus-aurelius-gettyimages-122316830.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Take charge of your life</h5>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-6 border-bottom">
-         <h5>Due Date</h5>
-         <div class="input-group date" id="datePicker">
-            <input type="text" placeholder="dd/mm/yyyy" class="form-control" name="">
-            <span class="input-group-append">
-                <span class="input-group-text" id="date-icon">
-                <i class="fa-solid fa-calendar-days"></i></span>
-            </span>
-         </div>
-        </div>
-        <div class="col-6 text-right border-bottom">
-<!-- button add task -->
-<button  type="submit" class="btn btn-success task-btn ">
-    <span class="p-2"><i class="fa-solid fa-plus"></i></span>
-    Add Task</button>
 
+        <div class="form-holder">
+            <form action="/desc" method="post" id="task-form">
+                <div class="form-group">
+                    <label for="Description">Enter Task Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Task Name" required>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="Category">Select task category</label>
+                            <select name="category" class="form-control">
+                                <option value="Work">Work</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Study">Study</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="form-group">
+                            <label for="Date">Pick a Date</label>
+                            <div class="input-group date" id="datePicker">
+                                <input type="text" placeholder="dd-mm-yyyy" class="form-control" name="date">
+                                <span class="input-group-append">
+                                    <span class="input-group-text" id="date-icon">
+                                    <i class="fa-solid fa-calendar-days"></i></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="col-sm text-right p-3">
+                    <button class="btn btn-success" type="submit" form="task-form">Add Task</button>
+                </div>
+                <div class="col-sm text-left p-3">
+                    <button class="btn btn-danger" onclick="delete_selected();">Delete Task</button>
+                </div>
+            </div>
         </div>
-        <div class="col-6 text-left border-bottom">
-            <a href="/delete-task"><button type="button" class="btn btn-danger task-btn">
-                <span class="p-1"><i class="fa-solid fa-xmark"></i></span>
-                Delete Task</button></a>
-        </div>
-        <div class="col-12 border-bottom mt-3">
-   <ul>
-    
-<% for(let i of taskList) { %>
-    
-    <li>
 
-     <div class="list-details flex align-center">
-        <div class="width-15 align-center">
-        <input class="checkBox" type="checkbox" name="" id="">
+        <div class="border-bottom mt-3">
+            <ul>
+            <% for(let i of taskList) { %>
+                <li class="db-task-list-item">
+                    <div class="list-details flex align-center">
+                        <div class="width-15 align-center">
+                            <input class="checkBox" type="checkbox" name="checkbox" data-taskid="<%= i._id %>">
+                        </div>
+                        <div class="width-15 align-center color-facebook">
+                            <p><%= i.taskName %></p>
+                        </div>
+                        <div id= "date-in-list" class="align-center color-facebook">
+                            <p>
+                                <span id="date-icon">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                </span> 
+                                <%= i.taskDate %>
+                            </p>
+                        </div>
+                        <div class="cat-div flex text-center width-15 align-center ml-5 mt-2">
+                            <p class="cat-in-list">
+                                <%= i.taskCategory %>
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            <% } %> 
+            </ul>
+        </div>
     </div>
-    <div class="width-15 align-center color-facebook">
-          <p><%= i.taskName %></p>
-        </div>
-        <div id= "date-in-list" class="align-center text-info">
-          <p> <span id="date-icon"><i class="fa-solid fa-calendar-days"></i></span> <%= i.taskDate %></p>
-        </div>
-        <div class="cat-div flex text-center width-15 align-center ml-5 mt-2">
-          <p><marquee><%= i.category %></marquee></p>
-        </div>
-     </div>
-
-    </li>
-
-    <% } %> 
-</div>
-</div>
-</div>
-   </ul>
    
-
-        
-    
-
-
-
-
-
-   
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/home.js">
 

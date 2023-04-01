@@ -8,6 +8,9 @@ const homeController = require('../controllers/home_controllers');
 console.log('router loaded');
 
 router.get('/',homeController.home);
+router.post('/desc',homeController.addTask);
+router.get('/delete',homeController.deleteTask);
+// route.post('/desc',homeController.addTask);
 
 router.use('/users',require('./users'));
 

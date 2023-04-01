@@ -28,6 +28,12 @@ ul {
 }
 .list-details{
     width: 100%;
+   background-color: black;
+   padding: 10px;
+   align-items: center;
+   margin: 10px 0px;
+
+
 }
 .flex{
     display: flex;
@@ -55,4 +61,22 @@ ul {
 }
 #date-icon{
     color:grey;
+}
+.cat-in-list{
+border-radius: 20px;
+margin-left: -10px;
+background-color: chartreuse;
+font-size: 1.3rem;
+padding: 10px;
+}
+.card-img, .card-img-bottom, .card-img-top {
+height: 250px;
+}
+#dropdown{
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    font-weight: bolder;
+    margin: 5px 0px;
 }

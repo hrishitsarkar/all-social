@@ -1,10 +1,15 @@
 const express = require('express');
 const app = express();
 const port = 8000;
+const bodyParser = require('body-parser');
+const db = require('./config/mongoose');
 
+const TodoList = require('./models/task');
 //use express router
+app.use(bodyParser.urlencoded({extended:false}));
 app.use('/',require('./routes'));
 app.use(express.static('utils'));
+
 
 
 
