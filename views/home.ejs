@@ -107,17 +107,17 @@
                 </div>
             </div>
         </div>
-
+        <div id="status-zone"></div>
         <div class="border-bottom mt-2">
             <ul>
             <% for(let i of taskList) { %>
-                <li class="db-task-list-item border-top border-bottom">
+                <li class="db-task-list-item border-top border-bottom" id="<%= i._id %>">
                     <div class="list-details flex align-center">
                         <div class="width-15 align-center">
-                            <input id="check" class="checkBox" type="checkbox" name="checkbox" data-taskid="<%= i._id %>">
+                            <input class="checkBox" type="checkbox" name="checkbox" data-taskid="<%= i._id %>">
                         </div>
                         <div class="width-15 align-center text-danger">
-                            <p><%= i.taskName %></p>
+                            <p id="tName-<%= i._id %>"><%= i.taskName %></p>
                         </div>
                         <div id= "date-in-list" class="align-center color-facebook ml-4">
                             <p>

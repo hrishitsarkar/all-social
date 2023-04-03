@@ -3,14 +3,28 @@ function delete_selected() {
         (index, tag) => {
             if ($(tag).is(':checked')) {
                 let id = $(tag).data('taskid');
-                $.get("/delete?id=" + id, (data) => {
-                    console.log(data);
+                $.get("/delete?id=" + id, (data, status) => {
+                    if(status == "success" && data == ("Deleted ID = " + id)) {
+                        $('#'+id).remove();
+                    }
                 });
             }
         }
     );
-    window.location.href="/";
 }
+
+$('input[type="checkbox"]').click((e)=>{
+    console.log(e.target.dataset.taskid);
+    let id = e.target.dataset.taskid;
+    if(e.target.checked){
+        $('#tName-'+id).html('<strike>'+ $('#tName-'+id).html() +'</strike>');
+    }
+    else{
+        $('#tName-'+id).html($('#tName-'+id + " > strike").html());
+    }
+    // $('#tName-'+id).html('<strike>'+ $('#tName-'+id).html() +'</strike>');
+    // $('#tName-'+id).html($('#tName-'+id + " > strike").html());
+})
 
 // const TodoList = require("../../models/task");
 // const db = require('../../config/mongoose');

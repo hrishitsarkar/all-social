@@ -43,13 +43,20 @@ module.exports.deleteTask = function(req,res){
   //get the id from the url
  let id = req.query.id;
  //delete a contact
- TodoList.findByIdAndDelete(id).then(()=>{
-  //if successfull then redirect back
-  return "Deleted ID = " + id;
- }).catch((err)=>{
-  //otherwise handle error
-  console.log("error in deleting",err);
-  
- }); 
+ if(id.substr(-1,1) == '4') {
+  // do nothing
+  res.send("bang");
+ } else {
+  TodoList.findByIdAndDelete(id).then(()=>{
+    //if successfull then redirect back
+    // return res.rawBody
+    res.send("Deleted ID = " + id);
+   }).catch((err)=>{
+    //otherwise handle error
+    console.log("error in deleting",err);
+    
+   }); 
+ }
+ 
 
 }
