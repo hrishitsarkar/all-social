@@ -28,30 +28,54 @@
     <div class="container">
 
         <div id="first" class="row">
-            <div class="col-12 text-center border-bottom">
+            <div class="col-12 text-center border-bottom mt-2">
                 <h1 class="color-facebook">TODO App</h1>
             </div>
-            <div class="col-12 text-center flex justify-content-center">
+            </div>
+        <div class="row d-flex">
+            <div class="col-4-xl col-md-4 col-sm-12 mt-2">
                 <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="https://hips.hearstapps.com/hmg-prod/images/marcus-aurelius-gettyimages-122316830.jpg" alt="Card image cap">
+                    <img class="card-img-top" src="https://www.mensjournal.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTk2MTM2MDQyNDIzOTg1Mjk3/dbfrontsquat.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Take charge of your life</h5>
+                        <h5 class="card-title text-center">Workout</h5>
                     </div>
                 </div>
             </div>
+            
+            <div class="col-4-xl col-md-4 col-sm-12 mt-2">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="https://media.cnn.com/api/v1/images/stellar/prod/220531190304-woman-meditation-stock.jpg?c=3x2">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Meditation</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4-xl col-md-4 col-sm-12 col mt-2 ">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="https://images.ctfassets.net/pdf29us7flmy/4JU61ygq6O2SH7JFL4Kmwq/a414c63b49c1a13656cbde5f66597c55/shutterstock_1073291759_optimized__1_.jpeg">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Productive Work</h5>
+                    </div>
+                </div>
+            </div>
+            
         </div>
+        
+        
+        
+    
 
-        <div class="form-holder">
+        <div class="form-holder mt-2">
             <form action="/desc" method="post" id="task-form">
                 <div class="form-group">
-                    <label for="Description">Enter Task Name</label>
-                    <input type="text" class="form-control" name="name" placeholder="Task Name" required>
+                    <label class="h5" for="Description">Enter Task Name</label>
+                    <input type="text" id="text-desc" class="form-control" name="name" placeholder="What do you want to do?" required>
                 </div>
                 <div class="row">
-                    <div class="col-sm">
+                    <div class="col-sm border-right border-bottom">
                         <div class="form-group">
-                            <label for="Category">Select task category</label>
-                            <select name="category" class="form-control">
+                            <label for="Category" class="h5">Select task category</label>
+                            <select name="category" id="select-drpdwn" class="form-control">
                                 <option value="Work">Work</option>
                                 <option value="Personal">Personal</option>
                                 <option value="Study">Study</option>
@@ -60,9 +84,9 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-sm">
+                    <div class="col-sm border-bottom">
                         <div class="form-group">
-                            <label for="Date">Pick a Date</label>
+                            <label for="Date" class="h5">Pick a Date</label>
                             <div class="input-group date" id="datePicker">
                                 <input type="text" placeholder="dd-mm-yyyy" class="form-control" name="date">
                                 <span class="input-group-append">
@@ -74,28 +98,28 @@
                     </div>
                 </div>
             </form>
-            <div class="row">
+            <div class="row mt-2">
                 <div class="col-sm text-right p-3">
-                    <button class="btn btn-success" type="submit" form="task-form">Add Task</button>
+                    <button class="btn btn-success" type="submit" form="task-form"><i class="fa-solid fa-plus m-1"></i>Add Task</button>
                 </div>
                 <div class="col-sm text-left p-3">
-                    <button class="btn btn-danger" onclick="delete_selected();">Delete Task</button>
+                    <button class="btn btn-danger" onclick="delete_selected();"><i class="fa-sharp fa-solid fa-trash m-1"></i>Delete Task</button>
                 </div>
             </div>
         </div>
 
-        <div class="border-bottom mt-3">
+        <div class="border-bottom mt-2">
             <ul>
             <% for(let i of taskList) { %>
-                <li class="db-task-list-item">
+                <li class="db-task-list-item border-top border-bottom">
                     <div class="list-details flex align-center">
                         <div class="width-15 align-center">
-                            <input class="checkBox" type="checkbox" name="checkbox" data-taskid="<%= i._id %>">
+                            <input id="check" class="checkBox" type="checkbox" name="checkbox" data-taskid="<%= i._id %>">
                         </div>
-                        <div class="width-15 align-center color-facebook">
+                        <div class="width-15 align-center text-danger">
                             <p><%= i.taskName %></p>
                         </div>
-                        <div id= "date-in-list" class="align-center color-facebook">
+                        <div id= "date-in-list" class="align-center color-facebook ml-4">
                             <p>
                                 <span id="date-icon">
                                     <i class="fa-solid fa-calendar-days"></i>
@@ -103,7 +127,7 @@
                                 <%= i.taskDate %>
                             </p>
                         </div>
-                        <div class="cat-div flex text-center width-15 align-center ml-5 mt-2">
+                        <div class="cat-div flex text-center width-15 align-center ml-1 mt-2">
                             <p class="cat-in-list">
                                 <%= i.taskCategory %>
                             </p>

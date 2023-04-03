@@ -10,9 +10,8 @@ color: #1877f2;
 .btn:not(:disabled):not(.disabled) {
 height: 50px;
 }
-#category{
-    background-color: black;
-    margin: 5px 0px;
+#select-drpdwn{
+    height: 50px;
 }
 .input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label, .input-group:not(.has-validation)>.custom-file:not(:last-child) .custom-file-label::after, .input-group:not(.has-validation)>.custom-select:not(:last-child), .input-group:not(.has-validation)>.form-control:not(:last-child) {
     height: 50px;
@@ -28,10 +27,10 @@ ul {
 }
 .list-details{
     width: 100%;
-   background-color: black;
    padding: 10px;
    align-items: center;
    margin: 10px 0px;
+   font-family: Arial, Helvetica, sans-serif;
 
 
 }
@@ -40,7 +39,7 @@ ul {
 }
 .align-center{
     text-align: center;
-    font-weight: bolder;
+    
     font-size: 1.6rem;
 }
 .width-15{
@@ -63,11 +62,14 @@ ul {
     color:grey;
 }
 .cat-in-list{
-border-radius: 20px;
+border: 1px solid red;
 margin-left: -10px;
-background-color: chartreuse;
 font-size: 1.3rem;
 padding: 10px;
+}
+.cat-in-list:hover{
+    background-color: orange;
+    cursor: pointer;
 }
 .card-img, .card-img-bottom, .card-img-top {
 height: 250px;

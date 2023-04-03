@@ -14,8 +14,9 @@ const taskSchema = new mongoose.Schema({
         type:String,
         required : true
         }
-    
 });
+
+
 
 const TodoList = mongoose.model('TodoList',taskSchema);
 
