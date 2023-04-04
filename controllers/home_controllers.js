@@ -1,17 +1,6 @@
+//requiring the collections
 const TodoList = require("../models/task");
-
-var task = [
-   {
-     taskName : "coding",
-     taskDate : "31-01-2023",
-     category : "study"
-   },
-   {
-    taskName : "Gaming",
-    taskDate : "01-04-2023",
-    category : "game"
-  }
- ];
+//controller callback function for home
 module.exports.home = function(req,res){
    TodoList.find({}).then((tasks) =>{
     return res.render('home',{
@@ -24,32 +13,28 @@ module.exports.home = function(req,res){
    })
     
 }
+//controller callback function for add task
 module.exports.addTask = function(req,res){
-  // console.log(req.body);
-  // console.log(res);
-
+//store in models
   TodoList.create({
     taskName : req.body.name,
     taskCategory:req.body.category,
     taskDate : req.body.date
   }).then(()=>{
+    //if successfull redirect back
     return res.redirect('back');
   }).catch((err)=>{
     console.log(err);
   });
 }
+//controller callback function for delete task
 module.exports.deleteTask = function(req,res){
 
   //get the id from the url
  let id = req.query.id;
- //delete a contact
- if(id.substr(-1,1) == '4') {
-  // do nothing
-  res.send("bang");
- } else {
+ //delete a task
   TodoList.findByIdAndDelete(id).then(()=>{
-    //if successfull then redirect back
-    // return res.rawBody
+    //sending response as a string
     res.send("Deleted ID = " + id);
    }).catch((err)=>{
     //otherwise handle error
@@ -59,4 +44,3 @@ module.exports.deleteTask = function(req,res){
  }
  
 
-}

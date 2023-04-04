@@ -12,8 +12,9 @@ async function main(){
 //getting the connection
 
 const db = mongoose.connection;
-
+//success message
 db.once('open',function(){
     console.log("connected to db");
 });
+//exporting values
 module.exports = db;
